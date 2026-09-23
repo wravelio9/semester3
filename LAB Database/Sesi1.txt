@@ -1,0 +1,51 @@
+- Data Type
+- INT
+- CHAR -> Kalo dikasih constraint, mis: char(5) isi data nya harus pas 5 char
+usecase: bikin ID
+- VARCHAR -> lebih flex. var
+usecase: nama, alamat, dkk
+- DATE
+- BOOL
+- TEXT
+
+- Create Database
+CREATE DATABASE <nama-database>
+
+- Create Table
+CREATE TABLE <nama-tabel>(
+	colomn_name1 data_type
+	colomn_name2 data_type
+)
+
+Scenario untuk ID:
+1. ID001
+2. 00002
+3. CUST3
+Rule -> Regular Expression/REGEXP
+
+CREATE TABLE MsStaff(
+StaffID CHAR(5) PRIMARY KEY CHECK(StaffID REGEXP'^ST[0-9][0-9][0-9]$'),
+StaffName VARCHAR(50) NOT NULL,
+StaffAdress VARCHAR(100) NOT NULL,
+)
+
+- Delete Table
+DROP TABLE <nama-table>
+
+CREATE TABLE TransactionHeader(
+TransactionID CHAR(5) PRIMARY KEY,
+customerID CHAR(5) NOT NULL, 
+StaffID CHAR(5) NOT NULL,
+FOREIGN KEY(customerID) REFERENCES mscustomer(customerID)
+)
+
+CREATE TABLE TransactionHeader(
+TransactionID CHAR(5) PRIMARY KEY,
+customerID CHAR(5) NOT NULL, 
+StaffID CHAR(5) NOT NULL,
+FOREIGN KEY(customerID) REFERENCES mscustomer(customerID),
+FOREIGN KEY(StaffID) REFERENCES msstaff(StaffID)
+)
+
+
+
